@@ -1,0 +1,30 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+        <form (ngSubmit)="onRegister()">
+            <input class="w-full p-2 border rounded mb-3" placeholder="Name" [(ngModel)]="registerData.name" name="name"
+                required />
+
+            <input class="w-full p-2 border rounded mb-3" placeholder="Username" [(ngModel)]="registerData.username"
+                name="username" required />
+
+            <input class="w-full p-2 border rounded mb-3" placeholder="Phone" [(ngModel)]="registerData.phone"
+                name="phone" required />
+
+            <input class="w-full p-2 border rounded mb-3" type="email" placeholder="Email"
+                [(ngModel)]="registerData.email" name="email" required />
+
+            <input class="w-full p-2 border rounded mb-3" type="password" placeholder="Password"
+                [(ngModel)]="registerData.password" name="password" required />
+
+            <select class="w-full p-2 border rounded mb-4" [(ngModel)]="registerData.role_id" name="role_id" required>
+                <option [value]="1">User</option>
+                <option [value]="2">Admin</option>
+            </select>
+
+            <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" type="submit">
+                Register
+            </button>
+        </form>
+    </div>
+</div>

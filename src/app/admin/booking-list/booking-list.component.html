@@ -1,0 +1,34 @@
+<div class="p-6">
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">All Bookings</h2>
+
+    <div *ngIf="bookings.length > 0; else noData">
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 text-center">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                    <tr>
+                        <th class="py-2 px-4 border-b">Booking ID</th>
+                        <th class="py-2 px-4 border-b">Username</th>
+                        <th class="py-2 px-4 border-b">User Email</th>
+                        <th class="py-2 px-4 border-b">Hotel Name</th>
+                        <th class="py-2 px-4 border-b">Hotel Location</th>
+                        <th class="py-2 px-4 border-b">Date Booked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let booking of bookings">
+                        <td>{{ booking.id }}</td>
+                        <td class="py-2 px-4 border-b">{{ booking.user.username }}</td>
+                       <td>{{ booking.user.email }}</td>
+                       <td>{{ booking.hotel.name }}</td>
+                        <td class="py-2 px-4 border-b">{{ booking.hotel.location }}</td>
+                        <td class="py-2 px-4 border-b">{{ booking.check_in }} - {{booking.check_out}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <ng-template #noData>
+        <p class="text-gray-600 dark:text-gray-300">No bookings found.</p>
+    </ng-template>
+</div>

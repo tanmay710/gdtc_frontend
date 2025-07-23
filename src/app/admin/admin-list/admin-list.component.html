@@ -1,0 +1,36 @@
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-4">All Users</h2>
+
+    <div *ngIf="admins.length > 0; else noUsers">
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-4 py-2 border-b text-left">ID</th>
+                        <th class="px-4 py-2 border-b text-left">Name</th>
+                        <th class="px-4 py-2 border-b text-left">Email</th>
+                        <th class="px-4 py-2 border-b text-left">Phone</th>
+                        <th class="px-4 py-2 border-b text-left">Username</th>
+                        <th class="px-4 py-2 border-b text-left">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of admins" class="hover:bg-gray-50">
+                        <td>{{ admin.id }}</td>
+                        <td>{{ admin.name }}</td>
+                        <td>{{ admin.email }}</td>
+                        <td>{{ admin.phone }}</td>
+                        <td class="px-4 py-2 border-b">{{ admin.username }}</td>
+                        <td class="px-4 py-2 border-b capitalize">{{ admin.role }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <ng-template #noUsers>
+        <div class="text-gray-500 mt-4">
+            No users found.
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,39 @@
+<div class="p-4">
+  <mat-form-field appearance="outline" class="w-64 mb-4">
+    
+    <mat-select [(value)]="selected_range" (selectionChange)="rangeUpdate()">
+      <mat-option value="last_1_month">Last 1 Month</mat-option>
+      <mat-option value="last_6_month">Last 6 Months</mat-option>
+      <mat-option value="all_time">All Time</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-64 mb-4 ml-4">
+    
+    <mat-select [(value)]="sortBy" (selectionChange)="sortData()">
+      <mat-option value="most">Most Booked first</mat-option>
+      <mat-option value="least">Least booked first</mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="showData" class="mat-elevation-z8 w-full">
+
+    <ng-container matColumnDef="Hotel">
+      <th mat-header-cell *matHeaderCellDef> Hotel </th>
+      <td mat-cell *matCellDef="let row"> {{ row.Hotel }} </td>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="Count">
+      <th mat-header-cell *matHeaderCellDef> Bookings </th>
+      <td mat-cell *matCellDef="let row"> {{ row.count }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="Headers"></tr>
+    <tr mat-row *matRowDef="let row; columns: Headers;"></tr>
+  </table>
+
+  <div class="mt-4 text-right text-lg font-medium">
+    Total Bookings: {{ totalBooking }}
+  </div>
+</div>
