@@ -1,35 +1,31 @@
 <div class="mt-20 p-4">
-  <!-- Search, Dates, and Sort Controls -->
+
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 items-end mb-6 text-sm">
-    <!-- Search Bar -->
+
     <mat-form-field appearance="outline" class="w-full max-w-xs col-span-1 md:col-span-2">
 
       <input matInput [(ngModel)]="searchTerm" (ngModelChange)="searchHotels()" placeholder="Search hotel name" />
     </mat-form-field>
 
-    <!-- Check-in Date -->
+
     <mat-form-field appearance="outline" class="w-full max-w-xs">
-      <input matInput [matDatepicker]="picker1" [(ngModel)]="checkInDate" 
-        [min]="tomorrow" [max]="yearEnd" placeholder="Check-in Date" />
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="checkInDate" [min]="tomorrow" [max]="yearEnd"
+        placeholder="Check-in Date" />
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1 startView="multi-year"></mat-datepicker>
     </mat-form-field>
 
-    <!-- Check-out Date -->
+
     <mat-form-field appearance="outline" class="w-full max-w-xs">
       <input matInput [matDatepicker]="picker2" [(ngModel)]="checkOutDate" [min]="tomorrow" [max]="yearEnd"
         placeholder="Check-out Date" />
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 startView="multi-year"></mat-datepicker>
     </mat-form-field>
-    <ng-container *ngIf="isLoggedIn">
-    <div class="flex gap-2 mt-2">
-          <button mat-flat-button color="primary" (click)="bookingHistory()">Previous Bookings</button>
-    </div>
-  </ng-container>
+
   </div>
 
-  <!-- Sort Dropdown -->
+
   <div class="mb-6">
     <mat-form-field appearance="fill" class="w-full md:w-64">
       <mat-label>Sort by Price</mat-label>
@@ -39,9 +35,14 @@
         <mat-option value="desc">High to Low</mat-option>
       </mat-select>
     </mat-form-field>
+    <ng-container *ngIf="isLoggedIn">
+      <div class="flex gap-2 mt-2">
+        <button mat-flat-button color="primary" (click)="bookingHistory()">Previous Bookings</button>
+      </div>
+    </ng-container>
   </div>
 
-  <!-- Hotels Grid -->
+
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <div *ngFor="let hotel of paginatedHotels()" class="bg-white rounded-lg shadow-lg overflow-hidden relative">
       <img [src]="'http://localhost:8000' + hotel.image_url" alt="{{hotel.name}}"
@@ -58,7 +59,7 @@
           <button mat-stroked-button color="accent" (click)="openMap(hotel.location)">Map</button>
         </div>
 
-        <!-- Booking Confirmation Section -->
+
         <div *ngIf="selectedHotelId === hotel.id" class="mt-3 space-y-2">
           <button mat-raised-button color="warn" (click)="confirmBooking(hotel.id)">
             Confirm Booking ({{ checkInDate | date:'EEE MMM d' }} to {{ checkOutDate | date:'EEE MMM d' }})
@@ -68,7 +69,7 @@
     </div>
   </div>
 
-  <!-- Pagination -->
+
   <div class="mt-8 flex justify-center items-center gap-2">
     <button mat-icon-button (click)="prevPage()" [disabled]="currentPage === 0">
       <mat-icon>chevron_left</mat-icon>

@@ -51,7 +51,7 @@ export class HotelsComponent implements OnInit {
   fetchHotels() {
     this.http.get<any[]>("http://localhost:8000/hotels").subscribe(data => {
     this.hotels = data;
-    this.filteredHotels = [...this.hotels];
+    this.filteredHotels = [...this.hotels]; //shallow copy
     });
   }
  
@@ -73,9 +73,19 @@ export class HotelsComponent implements OnInit {
       return;
     }
  
-    if (this.bookedDates.includes(this.checkInDate) || this.bookedDates.includes(this.checkOutDate)) {
-      this.toaster.error("Selected dates are already booked. Choose another range.");
-      return;
+    const start = new Date(this.checkInDate)
+    const end = new Date(this.checkOutDate)
+    let overlap = false
+
+    for(let d = new Date(start); d<= end; d.setDate(d.getDate()+1)){
+      const i = d.toISOString().split('T')[0]
+      if(this.bookedDates.includes(i)){
+        overlap = true;
+        break;
+      }
+    }
+    if(overlap){
+      this.toaster.error("Selected dates are already booked")
     }
  
     const token = this.loginService.getToken();

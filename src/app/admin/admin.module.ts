@@ -18,8 +18,8 @@ import {MatTableModule} from '@angular/material/table'
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { RevenueStatsComponent } from './revenue-stats/revenue-stats.component';
-import { ChartsComponent } from './charts/charts.component'
-import { NgApexchartsModule } from 'ng-apexcharts';
+import {NgChartsModule} from 'ng2-charts'
+import { ChartsComponent } from './charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     AddHotelsComponent,
     BookingstatsComponent,
     RevenueStatsComponent,
-    ChartsComponent,
-    
+    ChartsComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +42,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
-    NgApexchartsModule
+    NgChartsModule
   ]
 })
 export class AdminModule { }

@@ -1,3 +1,14 @@
-<apx-chart *ngIf = "chartOptions" [series] = "chartOptions.series" [chart] = "chartOptions.chart" [labels]="chartOptions.labels">
+<div class="flex flex-row gap-[100px] ">
+    <div class="w-[700px] h-[300px] !mt-5 ">
+        <canvas baseChart [type]="barChartType" [data]="barChartData" [options]="barChartOptions">
+        </canvas>
+    </div>
 
-</apx-chart>
+    
+        <div class="w-[400px] h-[400px] !mt-5">
+
+            <canvas baseChart [type]="pieChartType" [data]="pieChartData" [options]="pieChartOptions">
+            </canvas>
+        </div>
+
+</div>
