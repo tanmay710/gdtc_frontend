@@ -7,6 +7,8 @@ import {HttpClientModule,HttpClient, provideHttpClient, withInterceptors, HTTP_I
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HotelsComponent } from './shared/hotels/hotels.component';
+import { ContactComponent } from './shared/contact/contact.component';
+import { AboutComponent } from './shared/about/about.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Interceptor } from './Interceptor/interceptor.interceptor';
@@ -33,7 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HotelsComponent
+    HotelsComponent,
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

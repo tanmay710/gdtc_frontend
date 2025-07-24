@@ -24,7 +24,7 @@ onRegister() {
       this.router.navigate(['auth/login'])
     },
     error : (err) =>{
-      this.toaster.error("Registration failed",err)
+      this.toaster.error("Registration failed,please fill all the fields",err)
     }
   })
 }

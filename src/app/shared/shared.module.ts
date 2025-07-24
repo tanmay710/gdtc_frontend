@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ContactComponent } from './contact/contact.component'
     FormsModule,
     MatListModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }

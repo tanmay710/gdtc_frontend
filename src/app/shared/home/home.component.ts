@@ -10,4 +10,7 @@ export class HomeComponent {
   onClick(){
     this.router.navigate(['/auth/register'])
   }
+  learn(){
+    this.router.navigate(['/about'])
+  }
 }
