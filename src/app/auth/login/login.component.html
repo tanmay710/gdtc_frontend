@@ -1,9 +1,20 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-    <form (ngSubmit)="onLogin()">
-      <input class="w-full p-2 border rounded mb-4" placeholder="Username" [(ngModel)]="loginData.username" name="username" required />
-      <input class="w-full p-2 border rounded mb-4" type="password" placeholder="Password" [(ngModel)]="loginData.password" name="password" required />
+    <form [formGroup]="login" (ngSubmit)="onLogin()">
+      <input class="w-full p-2 border rounded mb-4" name="username" placeholder="Username" [(ngModel)]="loginData.username" formControlName="username"  />
+      <div *ngIf ="login.get('username')?.invalid && (login.get('username')?.dirty || login.get('username')?.touched)">
+        <div *ngIf = "login.get('username')?.hasError('required')" class="!text-red-500 pb-2">
+          Please enter your username
+        </div>
+      </div>
+      
+      <input class="w-full p-2 border rounded mb-4" name="password" type="password" placeholder="Password" [(ngModel)]="loginData.password" formControlName="password" required />
+      <div *ngIf ="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched)">
+        <div *ngIf = "login.get('password')?.hasError('required')" class="!text-red-500 pb-2">
+          Please enter your password
+        </div>
+      </div>
       <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" type="submit">Login</button>
     </form>
   </div>

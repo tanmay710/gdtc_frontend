@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder,Validators} from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { concatAll } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -12,22 +13,20 @@ export class ContactComponent{
   contactUs: FormGroup;
   constructor(private toaster: ToastrService, private fb : FormBuilder){
       this.contactUs = this.fb.group({
-      email :['',Validators.required, Validators.email],
+      email :['',[Validators.required, Validators.email]],
       Subject : ['',Validators.required],
       text : ['',Validators.required]
     })
   }
-  // ngOnInit():{
-  //   this.contactUs =  this.fb.group({
-  //     email : new FormGroup('',[Validators.required,Validators.email])
-  //   })
-  // }
- 
+  
   onClick(){
+    console.log(this.contactUs.value);
     if(this.contactUs.valid){
       this.toaster.success("You have successfully contacted us")
     }
-    
+  else{
+    this.toaster.error("Invalid details")
+  }    
     
   }
 }

@@ -1,25 +1,25 @@
-<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+<nav class="bg-white  fixed w-full z-20 top-0 start-0 border-b border-gray-200 ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <!-- Logo / Brand -->
+ 
 
     <div class="flex items-center space-x-3 ">
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap ">
         Booksmart
       </span>
     </div>
 
 
-    <!-- Right Side Buttons -->
+
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
-      <!-- NOT Logged In -->
+    
       <ng-container *ngIf="!isLoggedIn">
         <button routerLink="/auth/register" type="button"
-          class="text-white bg-blue-700 mr-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          class="text-white bg-blue-700 mr-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">
           Register
         </button>
         <button routerLink="/auth/login" type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
           Login
         </button>
       </ng-container>
@@ -28,7 +28,7 @@
       <ng-container *ngIf="isLoggedIn">
 
         <button *ngIf="!isAdmin" routerLink="user/checkout" type="button"
-          class="flex items-center text-white mr-2 bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+          class="flex items-center text-white mr-2 bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -42,8 +42,8 @@
         <div *ngIf="isLoggedIn" class="relative ml-2">
 
           <button (click)="toggleDropdown()" type="button"
-            class="flex items-center bg-gray-200 text-black rounded-full w-10 h-10 justify-center hover:ring-3 ring-blue-500 dark:bg-gray-700 dark:text-white">
-            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            class="flex items-center bg-gray-200 text-black rounded-full w-10 h-10 justify-center hover:ring-3 ring-blue-500">
+            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-width="2"
                 d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -51,12 +51,12 @@
 
           </button>
 
-          <div *ngIf="dropDown" class="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 z-50">
-            <div class="py-2 px-4 text-gray-700 dark:text-white text-sm border-b dark:border-gray-600">
+          <div *ngIf="dropDown" class="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white z-50">
+            <div class="py-2 px-4 text-gray-700  text-sm border-b ">
               {{ username }}
             </div>
             <button (click)="logOut()"
-              class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-red-400">
+              class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 ">
               Log Out
             </button>
           </div>
@@ -68,27 +68,27 @@
     <div *ngIf="!isAdmin" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
       id="navbar-sticky">
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
         <li>
           <a href="#"
-            class="block py-2 px-3 !text-gray-900 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+            class="block py-2 px-3 !text-gray-900 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 "
             aria-current="page">Home</a>
         </li>
         <li>
           <a routerLink="/hotels"
-            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">
             Explore
           </a>
         </li>
         <li>
           <a routerLink = "/about"
-            class="block py-2 px-3 !text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+            class="block py-2 px-3 !text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">
             About
           </a>
         </li>
         <li>
           <a routerLink = "/contact"
-            class="block py-2 px-3 !text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+            class="block py-2 px-3 !text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">
             Contact
           </a>
         </li>

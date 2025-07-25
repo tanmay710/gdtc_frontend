@@ -4,6 +4,15 @@ import { LoginService } from 'src/app/core/login.service';
 import { BookingsService } from 'src/app/core/bookings.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'; 
+
+export interface Hotels{
+  id : number,
+  name : string,
+  location : string,
+  price : number,
+  image_url : string
+}
+
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
@@ -15,8 +24,8 @@ export class HotelsComponent implements OnInit {
   today: string = new Date().toISOString().split('T')[0];
   tomorrow : Date = new Date()
   yearEnd : Date = new Date()
-  hotels: any[] = [];
-  filteredHotels: any[] = [];
+  hotels: Hotels[] = [];
+  filteredHotels: Hotels[] = [];
  
   selectedHotelId: number | null = null;
   bookedDates: string[] = [];
@@ -49,7 +58,7 @@ export class HotelsComponent implements OnInit {
   }
  
   fetchHotels() {
-    this.http.get<any[]>("http://localhost:8000/hotels").subscribe(data => {
+    this.http.get<Hotels[]>("http://localhost:8000/hotels").subscribe(data => {
     this.hotels = data;
     this.filteredHotels = [...this.hotels]; //shallow copy
     });
@@ -140,20 +149,7 @@ export class HotelsComponent implements OnInit {
   goToPage(page: number) {
     this.currentPage = page;
   }
- 
-  // Filter by check-in date
-  // filterByCheckInDate() {
-  //   if (!this.checkInDate) {
-  //     this.filteredHotels = [...this.hotels];
-  //     return;
-  //   }
-  //   const checkIn = new Date(this.checkInDate).toISOString().split('T')[0];
-  //     this.filteredHotels = this.hotels.filter(hotel => {
-  //     return Array.isArray(hotel.bookedDates)&& !hotel.bookedDates.includes(checkIn);
-  //   });
-  //   this.currentPage = 0;
-  // }
- 
+  
   
   searchHotels() {
     const term = this.searchTerm.toLowerCase();

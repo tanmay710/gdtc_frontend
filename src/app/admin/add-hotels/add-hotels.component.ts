@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AddHotelsService } from 'src/app/core/add-hotels.service';
-import { FormsModule,FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-add-hotels',
   templateUrl: './add-hotels.component.html',
@@ -10,7 +9,7 @@ export class AddHotelsComponent {
   hotel = {
     name:'',
     location:'',
-    price: 0 as number,
+    price: 0,
 
   };
   selectedFile:File| null = null

@@ -1,13 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingsService } from 'src/app/core/bookings.service';
  
+export interface USERBOOKING{
+  id : number,
+  user :{
+    id : number,
+    name : string,
+    username : string,
+    phone : number,
+    email : string,
+    role :{
+      name : string
+    }
+  },
+  hotel : {
+    id : number,
+    name : string,
+    location : string,
+    price : number,
+    image_url : string
+  },
+  check_in : Date,
+  check_out : Date
+}
+
+
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css'],
 })
 export class BookingsComponent implements OnInit {
-  userBookings: any[] = [];
+  userBookings: USERBOOKING[] = [];
   filteredBookings: any[] = [];
   searchText: string = '';
   sort: 'asc' | 'desc' = 'desc';
@@ -31,13 +55,11 @@ export class BookingsComponent implements OnInit {
   }
  
   applyFilters() {
-    // search
     const text = this.searchText.toLowerCase();
     this.filteredBookings = this.userBookings.filter((booking) =>
       booking.hotel.name.toLowerCase().includes(text)
     );
  
-    // sort
     this.filteredBookings.sort((a, b) => {
       const dateA = new Date(a.check_in).getTime();
       const dateB = new Date(b.check_in).getTime();

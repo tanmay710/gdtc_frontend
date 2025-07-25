@@ -8,18 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PortalComponent {
   constructor(private http : HttpClient,private router : Router){}
-  viewBooking(){
-    this.router.navigate(['admin/booking'])
-  }
-  viewUsers(){
-    this.router.navigate(['admin/users'])
-  }
-  viewAdmins(){
-    this.router.navigate(['admin/admins'])
-  }
-  addHotels(){
-    this.router.navigate(['admin/add'])
-  }
+ 
 
   isOpen = true
   toggleSidebar(){

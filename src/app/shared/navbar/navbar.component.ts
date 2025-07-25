@@ -30,15 +30,6 @@ export class NavbarComponent implements OnInit{
     this.dropDown = !this.dropDown
   }
 
-  // loginStatus(){
-  //   const token = localStorage.getItem('token')
-  //   if(token){
-  //     this.isLoggedIn = true
-  //   }
-  //   else{
-  //     this.isLoggedIn = false
-  //   }
-  // }
   logOut(){
     if(confirm("Are you sure you want to logout")){
       this.service.logout();

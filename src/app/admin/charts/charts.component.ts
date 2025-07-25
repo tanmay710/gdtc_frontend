@@ -14,7 +14,6 @@ import {
   ArcElement,
 
 } from 'chart.js';
-import { MatLabel } from '@angular/material/form-field';
 
 Chart.register(CategoryScale, LinearScale, BarElement, BarController, Tooltip, Legend,PieController,ArcElement);
 

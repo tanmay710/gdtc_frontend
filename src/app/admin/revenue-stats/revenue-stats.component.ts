@@ -1,5 +1,33 @@
 import { Component,OnInit } from '@angular/core';
 import { AdminStatsService } from 'src/app/core/admin-stats.service';
+
+
+export interface REVENUE{
+
+  last_1_month:{
+    total_revenue : number,
+    hotels:[{
+      Hotels : string,
+      revenue: number
+    }]
+  },
+  last_6_months:{
+    total_revenue : number,
+    hotels:[{
+      Hotels : string,
+      revenue: number
+    }]
+  }
+  all_time:{
+    total_revenue : number,
+    hotels:[{
+      Hotels : string,
+      revenue: number
+    }]
+  }
+}
+
+
 @Component({
   selector: 'app-revenue-stats',
   templateUrl: './revenue-stats.component.html',

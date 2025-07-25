@@ -1,10 +1,11 @@
-<div class="p-4 mt-[80px] w-[400px]">
+<div class="flex flex-cols items-centered justify-center">
+<div class="p-4 mt-[80px] w-[400px] mb-[320px] !overflow:hidden">
   <h2 class="text-2xl font-bold mb-4">Your current booking</h2>
 
   <div *ngFor="let booking of bookings" class="border p-4 rounded mb-4 shadow">
     
     <form *ngIf="editingId !== booking.id" [formGroup]="editForms[booking.id]">
-      <p class="mb-2"><strong>Hotel Name:</strong> {{ booking.hotel?.name}}</p>
+      <p class="mb-2"><strong>Hotel Name:</strong> {{ booking.hotel.name}}</p>
 
       <p class="mb-2"><strong>Check-in:</strong> {{ booking.check_in }}</p>
       <p class="mb-2"><strong>Check-out:</strong> {{ booking.check_out }}</p>
@@ -25,4 +26,4 @@
     </form>
 
   </div>
-</div>
+</div></div>

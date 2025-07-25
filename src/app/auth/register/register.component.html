@@ -1,26 +1,46 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 ">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
-        <form (ngSubmit)="onRegister()">
+        <form [formGroup]="reg" (ngSubmit)="onRegister()">
             <input class="w-full p-2 border rounded mb-3" placeholder="Name" [(ngModel)]="registerData.name" name="name"
-                required />
+            formControlName = 'name' />
+            <div *ngIf="reg.get('name')?.invalid && (reg.get('name')?.dirty || reg.get('name')?.touched)">
+                <div *ngIf="reg.get('name')?.hasError('required')">
+                    <div class="!text-red-500">Please enter your name!</div>
+                </div>
+            </div>
 
             <input class="w-full p-2 border rounded mb-3" placeholder="Username" [(ngModel)]="registerData.username"
-                name="username" required />
+              formControlName="username"  name="username" required />
+              <div *ngIf="reg.get('username')?.invalid && (reg.get('username')?.dirty || reg.get('username')?.touched)">
+                <div *ngIf="reg.get('username')?.hasError('required')">
+                    <div class="!text-red-500">Please enter your name!</div>
+                </div>
+            </div>
 
-            <input class="w-full p-2 border rounded mb-3" placeholder="Phone" [(ngModel)]="registerData.phone"
+            <input class="w-full p-2 border rounded mb-3" placeholder="Phone" [(ngModel)]="registerData.phone" formControlName="phone"
                 name="phone" required />
+                <div *ngIf="reg.get('phone')?.invalid && (reg.get('phone')?.dirty || reg.get('phone')?.touched)">
+                <div *ngIf="reg.get('phone')?.hasError('required')">
+                    <div class="!text-red-500">Please enter your name!</div>
+                </div>
+            </div>
 
-            <input class="w-full p-2 border rounded mb-3" type="email" placeholder="Email"
+            <input class="w-full p-2 border rounded mb-3" type="email" placeholder="Email" formControlName ="email"
                 [(ngModel)]="registerData.email" name="email" required />
+                <div *ngIf="reg.get('email')?.invalid && (reg.get('email')?.dirty || reg.get('email')?.touched)">
+                <div *ngIf="reg.get('email')?.hasError('required')">
+                    <div class="!text-red-500">Please enter your name!</div>
+                </div>
+            </div>
 
-            <input class="w-full p-2 border rounded mb-3" type="password" placeholder="Password"
+            <input class="w-full p-2 border rounded mb-3" type="password" placeholder="Password" formControlName = "password"
                 [(ngModel)]="registerData.password" name="password" required />
-
-            <!-- <select class="w-full p-2 border rounded mb-4" [(ngModel)]="registerData.role_id" name="role_id" required>
-                <option [value]="1">User</option>
-                <option [value]="2">Admin</option>
-            </select> -->
+                <div *ngIf="reg.get('password')?.invalid && (reg.get('password')?.dirty || reg.get('password')?.touched)">
+                <div *ngIf="reg.get('name')?.hasError('required')">
+                    <div class="!text-red-500">Please enter your password!</div>
+                </div>
+            </div>
 
             <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" type="submit">
                 Register

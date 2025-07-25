@@ -3,13 +3,37 @@ import { BookingsService } from 'src/app/core/bookings.service';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
+export interface BOOKING{
+  id : number,
+  user :{
+    id : number,
+    name : string,
+    username : string,
+    phone : number,
+    email : string,
+    role:{
+      name : string
+    }
+  },
+  hotel :{
+    id : number,
+    name : string,
+    location : string,
+    price : number,
+    image_url: string
+  },
+  check_in : Date
+  check_out : Date
+}
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
-  bookings : any[] = []
+  bookings : BOOKING[] = []
   editForms :{[key : number] : FormGroup}={}
   editingId : number | null = null
   constructor(private service : BookingsService, private fb : FormBuilder, private router : Router, private toaster : ToastrService){}
@@ -34,7 +58,7 @@ export class CheckoutComponent implements OnInit{
   }
   updateBooking(id:number){
     const form = this.editForms[id]
-    this.service.updateBookings(id,form.value).subscribe(res =>{
+    this.service.updateBookings(id,form.value).subscribe(() =>{
       this.toaster.success("Booking updated")
       this.editingId = null;
       this.fetchBookings();
