@@ -14,7 +14,7 @@
               formControlName="username"  name="username" required />
               <div *ngIf="reg.get('username')?.invalid && (reg.get('username')?.dirty || reg.get('username')?.touched)">
                 <div *ngIf="reg.get('username')?.hasError('required')">
-                    <div class="!text-red-500">Please enter your name!</div>
+                    <div class="!text-red-500">Please enter your username!</div>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 name="phone" required />
                 <div *ngIf="reg.get('phone')?.invalid && (reg.get('phone')?.dirty || reg.get('phone')?.touched)">
                 <div *ngIf="reg.get('phone')?.hasError('required')">
-                    <div class="!text-red-500">Please enter your name!</div>
+                    <div class="!text-red-500">Please enter your phone!</div>
                 </div>
             </div>
 

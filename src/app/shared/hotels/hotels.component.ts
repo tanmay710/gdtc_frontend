@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/core/login.service';
 import { BookingsService } from 'src/app/core/bookings.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'; 
+import flatpickr from 'flatpickr';
 
 export interface Hotels{
   id : number,
@@ -26,18 +27,28 @@ export class HotelsComponent implements OnInit {
   yearEnd : Date = new Date()
   hotels: Hotels[] = [];
   filteredHotels: Hotels[] = [];
- 
+
+  clickedHotel : Hotels = {
+    id :0,
+    name : "",
+    location : '',
+    price : 0,
+    image_url : ''
+  }
+
   selectedHotelId: number | null = null;
   bookedDates: string[] = [];
  
   isLoggedIn = false;
- 
+  
+  showBox = false;
 
   pageSize = 6;
   currentPage = 0;
  
  
   searchTerm: string = '';
+  last_searched : string ='0;'
   sortOrder: string = '';
  
   constructor(
@@ -74,6 +85,20 @@ export class HotelsComponent implements OnInit {
       next: (dates) => this.bookedDates = dates,
       error: (err) => console.error(err)
     });
+    this.showBox = true
+    if(!this.checkInDate || !this.checkOutDate){
+      this.toaster.error("Please select check-in and check-out dates!");
+      return;
+    }
+    else{
+      for(let i=0; i < this.hotels.length; i++){
+      if(this.hotels[i].id === this.selectedHotelId){
+        this.clickedHotel = this.hotels[i]
+      }
+    }
+    }
+    
+
   }
  
   confirmBooking(hotelId: number) {
@@ -153,8 +178,13 @@ export class HotelsComponent implements OnInit {
   
   searchHotels() {
     const term = this.searchTerm.toLowerCase();
+    
+    this.last_searched = this.searchTerm
+    if(this.last_searched !== null){
+      
+    }
     this.filteredHotels = this.hotels.filter(hotel =>
-    hotel.name.toLowerCase().includes(term)
+    hotel.name.toLowerCase().includes(term) || hotel.location.toLocaleLowerCase().includes(term)
     );
     this.applySorting();
     this.currentPage = 0;
@@ -186,5 +216,9 @@ export class HotelsComponent implements OnInit {
     else{
       this.isLoggedIn = false
     }
+  }
+
+  closeBox(){
+    this.showBox = false
   }
 }

@@ -41,6 +41,7 @@ export class CheckoutComponent implements OnInit{
     this.fetchBookings()
   }
   fetchBookings(){
+    console.log('call')
     this.service.getCurrentBooking().subscribe(data=>{
       console.log(data)
       this.bookings = [data]
@@ -52,6 +53,7 @@ export class CheckoutComponent implements OnInit{
           check_out : [data.check_out]
         })
     })
+
   }
   enableEdit(id:number){
     this.editingId = id;
@@ -72,4 +74,5 @@ export class CheckoutComponent implements OnInit{
       })
     }
   }
+
 }

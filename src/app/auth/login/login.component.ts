@@ -28,7 +28,6 @@ export class LoginComponent {
       this.service.login(this.loginData).subscribe({
         next: (res) => {
           this.toaster.success('Successfully logged in')
-        
           localStorage.setItem('token', res.access_token)
           localStorage.setItem('role', res.role)
           this.service.setRole(res.role)

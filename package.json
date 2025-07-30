@@ -23,6 +23,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "apexcharts": "^3.54.1",
     "chart.js": "^3.9.1",
+    "jwt-decode": "^4.0.0",
     "ng-apexcharts": "^1.8.0",
     "ng2-charts": "^4.0.1",
     "ngx-toastr": "^19.0.0",

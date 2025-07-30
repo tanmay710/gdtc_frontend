@@ -6,6 +6,8 @@
     
     <form *ngIf="editingId !== booking.id" [formGroup]="editForms[booking.id]">
       <p class="mb-2"><strong>Hotel Name:</strong> {{ booking.hotel.name}}</p>
+      <p class="mb-2">Hotel Id {{booking.hotel.id}}</p>
+      <p class="mb-2">Hotel location {{booking.hotel.location}}</p>
 
       <p class="mb-2"><strong>Check-in:</strong> {{ booking.check_in }}</p>
       <p class="mb-2"><strong>Check-out:</strong> {{ booking.check_out }}</p>

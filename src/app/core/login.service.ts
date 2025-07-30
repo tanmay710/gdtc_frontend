@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 
 
@@ -12,9 +13,11 @@ export class LoginService {
   public status = new BehaviorSubject<boolean>(this.isLoggedIn())
   public role = new BehaviorSubject<string | null>(localStorage.getItem('role'))
   public username = new BehaviorSubject<string | null>(localStorage.getItem('username'))
+  constructor(private http: HttpClient) {
 
-  constructor(private http: HttpClient) { }
+   }
   login(data :any):Observable<any>{
+    
     const body = new URLSearchParams();
     body.set('username',data.username);
     body.set('password',data.password)
@@ -27,6 +30,10 @@ export class LoginService {
       }
     ).pipe(
       tap((res : any)=>{
+        const decode = jwtDecode(res.access_token)
+        const exp = decode.exp
+        console.log("exp time", exp)
+
         console.log("login response", res.role)
         console.log(res)
         localStorage.setItem("token",res.access_token);
@@ -35,7 +42,7 @@ export class LoginService {
         this.status.next(true)
         this.role.next(res.role)
         this.username.next(res.username)
-        
+
       })
     )
   } 
@@ -75,4 +82,6 @@ isUser():boolean{
   return localStorage.getItem('role') === 'user'
 }
 
+
 }
+

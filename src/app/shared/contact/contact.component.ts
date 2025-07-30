@@ -2,7 +2,6 @@ import { Component} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder,Validators} from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { concatAll } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
